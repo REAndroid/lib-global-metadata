@@ -1,0 +1,27 @@
+name: Compile
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Compile with Gradle
+        run: ./gradlew build
+
+      - name: Upload library JAR
+        uses: actions/upload-artifact@v7
+        with:
+          name: lib-global-metadata
+          path: build/libs/*.jar

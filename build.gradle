@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile(files("$rootProject.projectDir/libs/ARSCLib.jar"))
+    implementation(files("$rootProject.projectDir/libs/ARSCLib.jar"))
 }
 
 processResources {
